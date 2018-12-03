@@ -1,0 +1,21 @@
+作者：杨浩然
+
+通过rabbitMQ实现基于rpc服务的多并发异步远程主机命令处理
+
+rpc服务：远程命令调用
+
+在client端通过指定queue发送命令和任务ID到server端，server端判定命令中的ip是否有本机ip，有本机ip
+则执行命令，并通过随机queue返回命令结果和任务ID，client端输入任务ID即可获取命令执行的结果，实现
+异步处理，可以一次性发送多个命令到主机，然后通过任务ID获取命令结果
+
+项目目录：
+
+|-- rpc_host_manage
+    |-- bin
+    |   |-- __init__.py
+    |-- core
+    |   |-- get_ip.py
+    |   |-- rpc_client.py
+    |   |-- rpc_server.py
+    |   |-- test.py
+    |   |-- __init__.py
